@@ -15,9 +15,7 @@ Como foco, esse programa será executado via acionamento de uma função no Lamb
 Para acelerar o processo de criação de tabela e entidades no banco de dados, foi criado um script para automatizar esse processo. Basta executar no terminal:
 
 ```sh
-{
   python db_create.py
-}
 ```
 
 # Imagens de funcionamento do programa
