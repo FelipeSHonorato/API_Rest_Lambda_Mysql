@@ -1,8 +1,11 @@
 # API de gerenciamento de tarefas serveless
 
+# Descrição do projeto
+
 Esse projeto tem como objetivo exemplificar o desenvolvimento de uma API de gerenciamento de tarefas em ambiente serveless onde suas rotas serão disponibilizadas através de uma função lambda e persistida em um banco Mysql na RDS.
 
-ATENÇÃO: Esse projeto não contempla um sistema mais restrito de segurança, onde o usuário deverá apresentar chave de autenticação para "bater" nas rotas via HTTP.
+# Diagrama de exemplo de funcionamento do programa
+
 
 ## Tecnologias Utilizadas
 
@@ -28,6 +31,8 @@ O AWS Lambda é um serviço de computação que permite executar código sem o p
 O Lambda executa seu código em uma infraestrutura de computação de alta disponibilidade e executa toda a administração dos recursos computacionais, incluindo manutenção do servidor e do sistema operacional, provisionamento e escalabilidade automática da capacidade e registro em log do código. Com o Lambda, tudo o que você precisa fazer é fornecer seu código em uma dos runtimes de linguagens compatíveis com o Lambda.
 
 Você organiza seu código em Funções do Lambda. O serviço do Lambda executa a função somente quando necessário e escala automaticamente. Você paga apenas pelo tempo de computação consumido. Não haverá cobranças quando o código não estiver em execução.
+
+
 
 # Requisitos para executar o projeto
 
@@ -72,6 +77,13 @@ Insira as informações solicitadas:
 
 Pronto, AWS CLI estará configurado!
 
+# Instalando Chalice
+
+Após instalação do AWS CLI e sua configuração é hora de instalar o framework Chalice inserindo o camando abaixo:
+```sh
+$ pip install chalice
+```
+
 # Executando o programa
 
 1. Crie um ambiente virtual na sua maquina para Python 3.7.9
@@ -79,12 +91,6 @@ Pronto, AWS CLI estará configurado!
 
 ```sh
 $ git clone repositorio
-```
-
-3. Agora instale as dependencias no seu ambiente virtual que estão dentro de requirements.txt digitando:
-
-```sh
-$ pip install -r requirements.txt
 ```
 
 4. Insira as credenciais do seu banco de dados no arquivo "**_ init _**.py" localizado dentro da pasta "chalicelib"
