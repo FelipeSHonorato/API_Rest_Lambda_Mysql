@@ -11,6 +11,15 @@ Esse projeto tem como objetivo exemplificar o desenvolvimento de uma API de gere
 O programa tem como premissa simular uma lista de tarefas, onde o usuário pode inserir uma tarefa, deletar uma tarefa, visualizar uma tarefa específica, visualizar todas as tarefas registradas e editar uma tarefa específica.
 Como foco, esse programa será executado via acionamento de uma função no Lambda, onde a mesma, através de controladores programados, efetuarão a persistencia no banco de dados e retornarão dados ao usuário.
 
+## Script para criação de tabela no banco de dados
+Para acelerar o processo de criação de tabela e entidades no banco de dados, foi criado um script para automatizar esse processo. Basta executar no terminal:
+
+```sh
+{
+  python db_create.py
+}
+```
+
 # Imagens de funcionamento do programa
 Através do aplicativo de teste de APIs Inmsonia foi efetuada requisições:
 
