@@ -29,6 +29,24 @@ Editando tarefa criada - /task/{id} (PUT)
 Deletando tarefa criada - /task/{id} (DELETE)
 ![Imagem do diagrama do projeto](https://github.com/FelipeSHonorato/API_Rest_Lambda_Mysql/blob/main/img/deletando_tarefa_criada.png)
 
+# Modelos de Json para inserção e edição das tarefas
+Para edição de uma tarefa já criada, o modelo de Json a ser introduzido segue abaixo:
+```sh
+{
+  "descricao": "Tarefa modificada",
+	"status": "Concluída"
+}
+```
+Observação: O status a ser inserido deverá ser "Concluída" ou "Não concluída", qualquer valor diferente que esse o programa retornará um erro informando sobre o mesmo.
+
+Para criação de uma nova tarefa, o modelo de Json a ser introduzido segue abaixo:
+```sh
+{
+  "descricao": "Nova tarefa"
+}
+```
+Observação: O sistema irá atribuir automaticamente um ID único para essa tarefa, além da data atual na qual foi criada e um status de "Não concluída".
+
 ## Tecnologias Utilizadas
 
 - Linguagem Python 3.7.9
@@ -122,13 +140,17 @@ $ git clone repositorio
 $ phyton db_create.py
 ```
 
-Será criado uma tabela no seu banco de dados com as seguintes entidades: id/descricao/status/dataCricao 5. Agora com a tabela criada com suas entidades é hora de executar o servidor como local para testes, acesse a pasta "apitodo" e digite no terminal ou prompt:
+Será criado uma tabela no seu banco de dados com as seguintes entidades: id/descricao/status/dataCricao 
+
+6. Agora com a tabela criada com suas entidades é hora de executar o servidor como local para testes, acesse a pasta "apitodo" e digite no terminal ou prompt:
 
 ```sh
 $ chalice local
 ```
 
-Será executado um servidor local, clique sobre o link disponibilizado para acessar via seu browser ou programa de requisições como Postman/Insominia através das rotas da API. Mais informações das rotas no tópico "Rotas disponibilizadas". 6. Após efetuar o teste local e verificar que a API está funcionando perfeitamente, está na hora de efetuarmos o deploys da aplicação para AWS, para tal através do terminal ou prompt digite:
+Será executado um servidor local, clique sobre o link disponibilizado para acessar via seu browser ou programa de requisições como Postman/Insominia através das rotas da API. Mais informações das rotas no tópico "Rotas disponibilizadas". 
+
+7. Após efetuar o teste local e verificar que a API está funcionando perfeitamente, está na hora de efetuarmos o deploys da aplicação para AWS, para tal através do terminal ou prompt digite:
 
 ```sh
 $ chalice deploy
@@ -145,3 +167,4 @@ Observações Importantes:
 
 - Essa API foi desenvolvida de forma simples não levando em conta restrições de acesso ou autenticações através de regras configuradas dentro da AWS.
 - A criação dessa API teve como base a criação de um ambiente virtual como manda as boas práticas de desenvolvimento.
+- Foram disponibilizadas as rotas desse projeto, que se encontra em funcionamento, para serem importadas no aplicativo Inmsonia e efetuar os testes das rotas.
