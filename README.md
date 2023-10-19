@@ -5,11 +5,29 @@
 Esse projeto tem como objetivo exemplificar o desenvolvimento de uma API de gerenciamento de tarefas em ambiente serveless onde suas rotas serão disponibilizadas através de uma função lambda e persistida em um banco Mysql na RDS.
 
 # Diagrama de exemplo de funcionamento do programa
-![Imagem do diagrama do projeto](https://github.com/FelipeSHonorato/API_Rest_Lambda_Mysql/blob/main/diagrama_projeto.png)
+![Imagem do diagrama do projeto](https://github.com/FelipeSHonorato/API_Rest_Lambda_Mysql/blob/main/img/diagrama_projeto.png)
 
 # Funcionalidades do programa
 O programa tem como premissa simular uma lista de tarefas, onde o usuário pode inserir uma tarefa, deletar uma tarefa, visualizar uma tarefa específica, visualizar todas as tarefas registradas e editar uma tarefa específica.
 Como foco, esse programa será executado via acionamento de uma função no Lambda, onde a mesma, através de controladores programados, efetuarão a persistencia no banco de dados e retornarão dados ao usuário.
+
+# Imagens de funcionamento do programa
+Através do aplicativo de teste de APIs Inmsonia foi efetuada requisições:
+
+Inserindo uma nova tarefa - /tasks (POST)
+![Imagem do diagrama do projeto](https://github.com/FelipeSHonorato/API_Rest_Lambda_Mysql/blob/main/img/adicionando_tarefa.png)
+
+Visualizando todas as tarefas - /tasks (GET)
+![Imagem do diagrama do projeto](https://github.com/FelipeSHonorato/API_Rest_Lambda_Mysql/blob/main/img/visualizando_tarefas.png)
+
+Visualizando tarefa criada - /tasks/{id} (GET)
+![Imagem do diagrama do projeto](https://github.com/FelipeSHonorato/API_Rest_Lambda_Mysql/blob/main/img/visualizando_tarefa_criada.png)
+
+Editando tarefa criada - /task/{id} (PUT)
+![Imagem do diagrama do projeto](https://github.com/FelipeSHonorato/API_Rest_Lambda_Mysql/blob/main/img/modificando_tarefa_criada.png)
+
+Deletando tarefa criada - /task/{id} (DELETE)
+![Imagem do diagrama do projeto](https://github.com/FelipeSHonorato/API_Rest_Lambda_Mysql/blob/main/img/deletando_tarefa_criada.png)
 
 ## Tecnologias Utilizadas
 
