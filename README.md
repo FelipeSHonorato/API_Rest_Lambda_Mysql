@@ -1,4 +1,4 @@
-# API de gerenciamento de tarefas serveless
+# API de gerenciamento de tarefas serverless
 
 # Descrição do projeto
 
