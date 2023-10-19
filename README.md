@@ -5,13 +5,11 @@
 Esse projeto tem como objetivo exemplificar o desenvolvimento de uma API de gerenciamento de tarefas em ambiente serveless onde suas rotas serão disponibilizadas através de uma função lambda e persistida em um banco Mysql na RDS.
 
 # Diagrama de exemplo de funcionamento do programa
-![](https://github.com/FelipeSHonorato/API_Rest_Lambda_Mysql/blob/main/diagrama_projeto.png)
+![Imagem do diagrama do projeto](https://github.com/FelipeSHonorato/API_Rest_Lambda_Mysql/blob/main/diagrama_projeto.png)
 
 # Funcionalidades do programa
 O programa tem como premissa simular uma lista de tarefas, onde o usuário pode inserir uma tarefa, deletar uma tarefa, visualizar uma tarefa específica, visualizar todas as tarefas registradas e editar uma tarefa específica.
 Como foco, esse programa será executado via acionamento de uma função no Lambda, onde a mesma, através de controladores programados, efetuarão a persistencia no banco de dados e retornarão dados ao usuário.
-
-
 
 ## Tecnologias Utilizadas
 
