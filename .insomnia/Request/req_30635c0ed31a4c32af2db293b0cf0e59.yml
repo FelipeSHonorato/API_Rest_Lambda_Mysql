@@ -1,0 +1,23 @@
+_id: req_30635c0ed31a4c32af2db293b0cf0e59
+type: Request
+parentId: wrk_41202e31d26345c1a229302595609ece
+modified: 1697681529691
+created: 1697561993385
+url: https://4qsegfzab1.execute-api.sa-east-1.amazonaws.com/api/tasks/17
+name: Buscar tarefa
+description: ""
+method: GET
+body: {}
+parameters: []
+headers:
+  - name: User-Agent
+    value: insomnia/8.3.0
+authentication: {}
+metaSortKey: -1697561993385
+isPrivate: false
+settingStoreCookies: true
+settingSendCookies: true
+settingDisableRenderRequestBody: false
+settingEncodeUrl: true
+settingRebuildPath: true
+settingFollowRedirects: global
