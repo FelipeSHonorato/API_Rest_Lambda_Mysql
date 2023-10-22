@@ -1,0 +1,14 @@
+_id: env_6914cf3f1ee9467f9820c57c8022f295
+type: Environment
+parentId: env_8d2de271c87a0f60e5700c7e5c4ca7b16794fe8c
+modified: 1697976061557
+created: 1697975828831
+name: Production
+data:
+  ApiUrl: https://4qsegfzab1.execute-api.sa-east-1.amazonaws.com/api
+dataPropertyOrder:
+  "&":
+    - ApiUrl
+color: "#cb2525"
+isPrivate: false
+metaSortKey: 1697975828831

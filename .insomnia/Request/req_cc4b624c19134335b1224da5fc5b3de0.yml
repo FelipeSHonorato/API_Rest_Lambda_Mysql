@@ -1,9 +1,9 @@
 _id: req_cc4b624c19134335b1224da5fc5b3de0
 type: Request
 parentId: wrk_41202e31d26345c1a229302595609ece
-modified: 1697681397206
+modified: 1697976114523
 created: 1697562011322
-url: https://4qsegfzab1.execute-api.sa-east-1.amazonaws.com/api/tasks
+url: "{{ _.ApiUrl }}/tasks"
 name: Inserir terefa
 description: ""
 method: POST
@@ -11,7 +11,7 @@ body:
   mimeType: application/json
   text: |-
     {
-    	"descricao":"Nova tarefa adicionada 6"
+    	"descricao":"Nova tarefa adicionada 57"
     }
 parameters: []
 headers:
