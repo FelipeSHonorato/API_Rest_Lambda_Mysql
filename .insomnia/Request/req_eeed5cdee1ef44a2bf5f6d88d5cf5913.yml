@@ -1,9 +1,9 @@
 _id: req_eeed5cdee1ef44a2bf5f6d88d5cf5913
 type: Request
 parentId: wrk_41202e31d26345c1a229302595609ece
-modified: 1697681615021
+modified: 1697976157496
 created: 1697562051240
-url: https://4qsegfzab1.execute-api.sa-east-1.amazonaws.com/api/tasks/17
+url: "{{ _.ApiUrl }}/tasks/17"
 name: Deletar tarefa
 description: ""
 method: DELETE

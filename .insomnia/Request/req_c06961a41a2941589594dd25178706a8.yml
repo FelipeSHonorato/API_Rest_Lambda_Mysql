@@ -1,9 +1,9 @@
 _id: req_c06961a41a2941589594dd25178706a8
 type: Request
 parentId: wrk_41202e31d26345c1a229302595609ece
-modified: 1697681562131
+modified: 1697976143886
 created: 1697562035979
-url: https://4qsegfzab1.execute-api.sa-east-1.amazonaws.com/api/tasks/17
+url: "{{ _.ApiUrl }}/tasks/18"
 name: Editar tarefa
 description: ""
 method: PUT
@@ -11,7 +11,7 @@ body:
   mimeType: application/json
   text: |-
     {
-    	"descricao": "Tarefa modificada Lambda",
+    	"descricao": "Nova modificação",
     	"status": "Concluída"
     }
 parameters: []
