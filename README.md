@@ -5,13 +5,16 @@
 Esse projeto tem como objetivo exemplificar o desenvolvimento de uma API de gerenciamento de tarefas em ambiente serveless onde suas rotas serão disponibilizadas através de uma função lambda e persistida em um banco Mysql na RDS.
 
 # Diagrama de exemplo de funcionamento do programa
+
 ![Imagem do diagrama do projeto](https://github.com/FelipeSHonorato/API_Rest_Lambda_Mysql/blob/main/img/diagrama_projeto.png)
 
 # Funcionalidades do programa
+
 O programa tem como premissa simular uma lista de tarefas, onde o usuário pode inserir uma tarefa, deletar uma tarefa, visualizar uma tarefa específica, visualizar todas as tarefas registradas e editar uma tarefa específica.
 Como foco, esse programa será executado via acionamento de uma função no Lambda, onde a mesma, através de controladores programados, efetuarão a persistencia no banco de dados e retornarão dados ao usuário.
 
 ## Script para criação de tabela no banco de dados
+
 Para acelerar o processo de criação de tabela e entidades no banco de dados, foi criado um script para automatizar esse processo. Basta executar no terminal:
 
 ```sh
@@ -19,39 +22,45 @@ Para acelerar o processo de criação de tabela e entidades no banco de dados, f
 ```
 
 # Imagens de funcionamento do programa
+
 Através do aplicativo de teste de APIs Inmsonia foi efetuada requisições:
 
 Inserindo uma nova tarefa - /tasks (POST)
-![Imagem do diagrama do projeto](https://github.com/FelipeSHonorato/API_Rest_Lambda_Mysql/blob/main/img/adicionando_tarefa.png)
+![Imagem do diagrama do projeto](https://github.com/FelipeSHonorato/API_Rest_Lambda_Mysql/blob/main/img/criando_tarefa.png)
 
 Visualizando todas as tarefas - /tasks (GET)
-![Imagem do diagrama do projeto](https://github.com/FelipeSHonorato/API_Rest_Lambda_Mysql/blob/main/img/visualizando_tarefas.png)
+![Imagem do diagrama do projeto](https://github.com/FelipeSHonorato/API_Rest_Lambda_Mysql/blob/main/img/buscando_tarefas.png)
 
 Visualizando tarefa criada - /tasks/{id} (GET)
-![Imagem do diagrama do projeto](https://github.com/FelipeSHonorato/API_Rest_Lambda_Mysql/blob/main/img/visualizando_tarefa_criada.png)
+![Imagem do diagrama do projeto](https://github.com/FelipeSHonorato/API_Rest_Lambda_Mysql/blob/main/img/buscando_tarefa.png)
 
 Editando tarefa criada - /task/{id} (PUT)
-![Imagem do diagrama do projeto](https://github.com/FelipeSHonorato/API_Rest_Lambda_Mysql/blob/main/img/modificando_tarefa_criada.png)
+![Imagem do diagrama do projeto](https://github.com/FelipeSHonorato/API_Rest_Lambda_Mysql/blob/main/img/editando_tarefa.png)
 
 Deletando tarefa criada - /task/{id} (DELETE)
-![Imagem do diagrama do projeto](https://github.com/FelipeSHonorato/API_Rest_Lambda_Mysql/blob/main/img/deletando_tarefa_criada.png)
+![Imagem do diagrama do projeto](https://github.com/FelipeSHonorato/API_Rest_Lambda_Mysql/blob/main/img/deletando_tarefa.png)
 
 # Modelos de Json para inserção e edição das tarefas
+
 Para edição de uma tarefa já criada, o modelo de Json a ser introduzido segue abaixo:
+
 ```sh
 {
   "descricao": "Tarefa modificada",
 	"status": "Concluída"
 }
 ```
+
 Observação: O status a ser inserido deverá ser "Concluída" ou "Não concluída", qualquer valor diferente que esse o programa retornará um erro informando sobre o mesmo.
 
 Para criação de uma nova tarefa, o modelo de Json a ser introduzido segue abaixo:
+
 ```sh
 {
   "descricao": "Nova tarefa"
 }
 ```
+
 Observação: O sistema irá atribuir automaticamente um ID único para essa tarefa, além da data atual na qual foi criada e um status de "Não concluída".
 
 ## Tecnologias Utilizadas
@@ -78,8 +87,6 @@ O AWS Lambda é um serviço de computação que permite executar código sem o p
 O Lambda executa seu código em uma infraestrutura de computação de alta disponibilidade e executa toda a administração dos recursos computacionais, incluindo manutenção do servidor e do sistema operacional, provisionamento e escalabilidade automática da capacidade e registro em log do código. Com o Lambda, tudo o que você precisa fazer é fornecer seu código em uma dos runtimes de linguagens compatíveis com o Lambda.
 
 Você organiza seu código em Funções do Lambda. O serviço do Lambda executa a função somente quando necessário e escala automaticamente. Você paga apenas pelo tempo de computação consumido. Não haverá cobranças quando o código não estiver em execução.
-
-
 
 # Requisitos para executar o projeto
 
@@ -127,6 +134,7 @@ Pronto, AWS CLI estará configurado!
 # Instalando Chalice
 
 Após instalação do AWS CLI e sua configuração é hora de instalar o framework Chalice inserindo o camando abaixo:
+
 ```sh
 $ pip install chalice
 ```
@@ -147,7 +155,7 @@ $ git clone repositorio
 $ phyton db_create.py
 ```
 
-Será criado uma tabela no seu banco de dados com as seguintes entidades: id/descricao/status/dataCricao 
+Será criado uma tabela no seu banco de dados com as seguintes entidades: id/descricao/status/dataCricao
 
 6. Agora com a tabela criada com suas entidades é hora de executar o servidor como local para testes, acesse a pasta "apitodo" e digite no terminal ou prompt:
 
@@ -155,7 +163,7 @@ Será criado uma tabela no seu banco de dados com as seguintes entidades: id/des
 $ chalice local
 ```
 
-Será executado um servidor local, clique sobre o link disponibilizado para acessar via seu browser ou programa de requisições como Postman/Insominia através das rotas da API. Mais informações das rotas no tópico "Rotas disponibilizadas". 
+Será executado um servidor local, clique sobre o link disponibilizado para acessar via seu browser ou programa de requisições como Postman/Insominia através das rotas da API. Mais informações das rotas no tópico "Rotas disponibilizadas".
 
 7. Após efetuar o teste local e verificar que a API está funcionando perfeitamente, está na hora de efetuarmos o deploys da aplicação para AWS, para tal através do terminal ou prompt digite:
 
