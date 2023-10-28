@@ -1,6 +1,6 @@
-from chalice import Response
 from chalicelib.db.db_connection import DbConnection
 from datetime import datetime
+from chalicelib.errors.http_errors import HttpCustomErrors
 
 class InsertTask:
 
@@ -10,6 +10,9 @@ class InsertTask:
         # Instanciando classe de conexão e recebendo conexão e cursor
         connection = DbConnection()
         db_connection, cursor = connection.db_connection()
+
+         # Instanciando classe de erros customizados
+        customError = HttpCustomErrors()
 
         # Efetuando a pesistencia no banco de dados - excluindo tarefa
         try:
@@ -23,21 +26,14 @@ class InsertTask:
                 cursor.execute(sql, (description, status, date_now))
                 db_connection.commit()
 
-                return Response(body={"message": "Tarefa inserida com sucesso."}, 
-                                status_code= 200,
-                                headers={'Content-Type': 'application/json'})
- 
+                return customError.action_successfully({"message":"Tarefa inserida com sucesso."})
+            
             else:
-                return Response(body={"message": "Campo 'descricao' é obrigatório."}, 
-                                status_code= 400,
-                                headers={'Content-Type': 'application/json'})
-
+                return customError.json_error("Informar uma descricao é obrigatório.")
+            
         except Exception as e:
-             return Response(body={"error": str(e)}, 
-                            status_code= 500,
-                            headers={'Content-Type': 'application/json'})
+            return customError.server_error(e)
         
         # Chamando função para fechamento do cursor e conexão com o banco
         finally:
             connection.db_close(cursor, db_connection)
-            
