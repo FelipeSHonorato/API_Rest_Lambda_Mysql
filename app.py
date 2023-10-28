@@ -10,7 +10,7 @@ app = Chalice(app_name='apitodo')
 
 # Disponibilizando rota para editar tarefa - método PUT
 @app.route('/tasks/{id_task}', methods=['PUT'])
-def custom_get(id_task):
+def custom_edit(id_task):
     data = app.current_request
     task = EditTask()
     result = task.edit_task(id_task, data)
@@ -18,7 +18,7 @@ def custom_get(id_task):
 
 # Disponibilizando rota para criar tarefa - método POST
 @app.route('/tasks', methods=['POST'])
-def custom_get():
+def custom_insert():
     data = app.current_request
     task = InsertTask()
     result = task.insert_task(data)
@@ -33,14 +33,14 @@ def custom_get():
 
 # Disponibilizando rota para visualizar tarefa - método GET
 @app.route('/tasks/{id_task}', methods=['GET'])
-def custom_get(id_task):
+def custom_get_id(id_task):
     task = ViewTask()
     result = task.view_task(id_task)
     return result
 
 # Disponibilizando rota para deletar tarefa - método DELETE
 @app.route('/tasks/{id_task}', methods=['DELETE'])
-def custom_get(id_task):
+def custom_delete(id_task):
     task = DeleteTask()
     result = task.delete_task(id_task)
     return result

@@ -1,4 +1,5 @@
 from chalicelib.db.db_connection import DbConnection
+from chalice import Response
 from chalicelib.utils.date_utils import format_date
 
 class ViewTask:
@@ -17,7 +18,9 @@ class ViewTask:
             row = cursor.fetchone()
 
             if cursor.rowcount == 0:
-                return {"message": "Tarefa não encontrada"}
+                return Response(body={"message": "Tarefa não encontrada."}, 
+                                status_code= 404,
+                                headers={'Content-Type': 'application/json'})
 
             else:
                 task = {
@@ -27,10 +30,14 @@ class ViewTask:
                     "DataCriacao": format_date(row[3])
                 }
 
-            return {"tarefa": task}
+            return Response(body={"tarefa": task},
+                            status_code= 200,
+                            headers={'Content-Type': 'application/json'})
 
         except Exception as e:
-            return {"error": str(e)}
+            return Response(body={"error": str(e)}, 
+                            status_code= 500,
+                            headers={'Content-Type': 'application/json'})
 
         # Chamando função para fechamento do cursor e conexão com o banco
         finally:

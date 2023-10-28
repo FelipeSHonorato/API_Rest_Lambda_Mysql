@@ -1,3 +1,4 @@
+from chalice import Response
 from chalicelib.db.db_connection import DbConnection
 from datetime import datetime
 
@@ -22,13 +23,21 @@ class InsertTask:
                 cursor.execute(sql, (description, status, date_now))
                 db_connection.commit()
 
-                return {"msg": "Tarefa inserida com sucesso"}
+                return Response(body={"message": "Tarefa inserida com sucesso."}, 
+                                status_code= 200,
+                                headers={'Content-Type': 'application/json'})
+ 
             else:
-                return {"msg": "Campo 'descricao' é obrigatório"}
+                return Response(body={"message": "Campo 'descricao' é obrigatório."}, 
+                                status_code= 400,
+                                headers={'Content-Type': 'application/json'})
 
         except Exception as e:
-            return {"msg": f"Erro ao inserir tarefa: {str(e)}"}
+             return Response(body={"error": str(e)}, 
+                            status_code= 500,
+                            headers={'Content-Type': 'application/json'})
         
         # Chamando função para fechamento do cursor e conexão com o banco
         finally:
             connection.db_close(cursor, db_connection)
+            
