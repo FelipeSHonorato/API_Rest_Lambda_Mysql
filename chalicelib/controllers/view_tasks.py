@@ -1,3 +1,4 @@
+from chalice import Response
 from chalicelib.db.db_connection import DbConnection
 from chalicelib.utils.date_utils import format_date
 from datetime import datetime, date
@@ -18,7 +19,9 @@ class ViewTasks:
             rows = cursor.fetchall()
 
             if not rows:
-                return {"message": "Não existem tarefas registradas"}
+                return Response(body={"message": "Não existem tarefas registradas."}, 
+                                status_code= 404,
+                                headers={'Content-Type': 'application/json'})
             tasks = []
             for row in rows:
                 task = {
@@ -28,13 +31,16 @@ class ViewTasks:
                     "DataCriação": format_date(row[3])
                 }
                 tasks.append(task)
-            return {"tarefas": tasks}
+            return Response(body={"tarefas": tasks}, 
+                            status_code= 200,
+                            headers={'Content-Type': 'application/json'})
 
         except Exception as e:
-            return {"error": str(e)}
+            return Response(body={"error": str(e)}, 
+                            status_code= 500,
+                            headers={'Content-Type': 'application/json'})
         
         # Chamando função para fechamento do cursor e conexão com o banco
         finally:
             connection.db_close(cursor, db_connection)
-
             

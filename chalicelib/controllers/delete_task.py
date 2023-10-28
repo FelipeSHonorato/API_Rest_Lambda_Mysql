@@ -1,3 +1,4 @@
+from chalice import Response
 from chalicelib.db.db_connection import DbConnection
 
 class DeleteTask:
@@ -16,12 +17,18 @@ class DeleteTask:
             db_connection.commit()
 
             if cursor.rowcount == 0:
-                return ({"message": "Tarefa não encontrada ou já foi excluída."})
+                return Response(body={"message": "Tarefa não encontrada ou já foi excluída."}, 
+                                status_code= 404,
+                                headers={'Content-Type': 'application/json'})
             else:
-                return {"message": f"Tarefa com ID {id_task} foi excluída com sucesso."}
+                return Response(body={"message": f"Tarefa com ID {id_task} foi excluída com sucesso."}, 
+                                status_code= 200,
+                                headers={'Content-Type': 'application/json'})
 
         except Exception as e:
-            return {"error": str(e)}
+            return Response(body={"error": str(e)}, 
+                    status_code=500,
+                    headers={'Content-Type': 'application/json'})
         
         # Chamando função para fechamento do cursor e conexão com o banco
         finally:
