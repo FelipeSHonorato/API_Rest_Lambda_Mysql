@@ -1,7 +1,6 @@
-from chalice import Response
 from chalicelib.db.db_connection import DbConnection
 from chalicelib.utils.date_utils import format_date
-from datetime import datetime, date
+from chalicelib.errors.http_errors import HttpCustomErrors
 
 class ViewTasks:
 
@@ -12,6 +11,9 @@ class ViewTasks:
         connection = DbConnection()
         db_connection, cursor = connection.db_connection()
 
+        # Instanciando classe de erros customizados
+        customError = HttpCustomErrors()
+
         # Efetuando a pesistencia no banco de dados - visualizando tarefas
         try:
             sql = "SELECT * FROM todolist"
@@ -19,9 +21,8 @@ class ViewTasks:
             rows = cursor.fetchall()
 
             if not rows:
-                return Response(body={"message": "Não existem tarefas registradas."}, 
-                                status_code= 404,
-                                headers={'Content-Type': 'application/json'})
+                return customError.not_found_error("Não existem tarefas registradas.")
+
             tasks = []
             for row in rows:
                 task = {
@@ -31,16 +32,13 @@ class ViewTasks:
                     "DataCriação": format_date(row[3])
                 }
                 tasks.append(task)
-            return Response(body={"tarefas": tasks}, 
-                            status_code= 200,
-                            headers={'Content-Type': 'application/json'})
-
+            return customError.action_successfully({"tarefas": tasks})
+     
         except Exception as e:
-            return Response(body={"error": str(e)}, 
-                            status_code= 500,
-                            headers={'Content-Type': 'application/json'})
+            return customError.server_error(e)
         
         # Chamando função para fechamento do cursor e conexão com o banco
         finally:
             connection.db_close(cursor, db_connection)
+
             
